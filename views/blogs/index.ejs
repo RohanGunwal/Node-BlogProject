@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/nav') %>
+                <form method="post" action="/blog/search">
+                    <div class="mb-3 input-group">
+                        <input type="search" name="search" id="search" class="form-control" autocomplete="off"
+                            placeholder="Type to search..." required>
+                        <input type="submit" value="Search" class="btn btn-primary px-5">
+                    </div>
+                </form>
+                <div class="content">
+                    <h3 class="display-5">Blogs</h3>
+                    <hr>
+                    <ul class="blog-ul">
+                        <% if(blogs.length){ %>
+                            <% blogs.forEach((blog)=> { %>
+                                <li class="blog-lists">
+                                    <h3 class="blog-heading">
+                                        <a href="blog/details/<%= blog.id %>">
+                                            <%= blog.topic %>
+                                        </a>
+                                    </h3>
+                                    <p class="blog-description">
+                                        <%= blog.description %>
+                                    </p>
+                                    <p class="blog-author">
+                                        -<%= blog.posted_by %>
+                                    </p>
+                                </li>
+                                <% }) %>
+                                    <% } else { %>
+                                        <h3 class="text-danger fs-3">No data</h3>
+                                        <% } %>
+                    </ul>
+                </div>
+        </div>
+    </body>
+
+</html>

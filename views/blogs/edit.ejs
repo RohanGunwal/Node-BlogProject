@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/nav') %>
+                <div class="content">
+                    <h3 class="display-5">Edit</h3>
+                    <hr>
+                    <form action="/blog/edit/<%= blog.id %>" method="post">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="name"
+                                autocomplete="off" value="<%= blog.posted_by %>">
+                            <label for="name">Enter name</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="topic" id="topic" class="form-control" placeholder="Text"
+                                autocomplete="off" value="<%= blog.topic %>">
+                            <label for="topic">Enter Topic</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <textarea name="description" id="description" class="form-control" placeholder="Description"
+                                style="height: 150px;" autocomplete="off"><%= blog.description %></textarea>
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" value="Update" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </body>
+
+</html>
